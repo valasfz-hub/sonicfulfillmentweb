@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Login | Sonic Fulfillment</title>
+<meta name="description" content="Sonic Fulfillment client dashboard: stock levels, orders shipped and tracking in one place.">
+<link rel="icon" type="image/png" href="assets/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Brand tokens: Sonic Fulfillment Brand Guidelines, Navy & Gold Edition */
+:root {
+  --navy: #001f3f;
+  --navy-2: #003d5c;
+  --gold: #d4af37;
+  --pale: #f5f5f5;
+  --line: #e8e8e8;
+  --white: #ffffff;
+  --success: #27ae60;
+  --warning: #f39c12;
+  --alert: #c0392b;
+  --ink: #1a2433;
+  --muted: #5f6368;
+  --faint: #8a8f96;
+
+  --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --radius: 16px;
+  --gutter: clamp(16px, 3vw, 32px);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { margin: 0; background: var(--pale); color: var(--ink); font: 400 15px/1.55 var(--font); }
+a { color: inherit; }
+h1, h2 { margin: 0; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; color: var(--navy); }
+p { margin: 0; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Top bar */
+.topbar { background: var(--navy); color: var(--white); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+.topbar img { height: 44px; width: auto; display: block; }
+.topbar-right { display: flex; align-items: center; gap: 16px; font-size: 14px; color: rgba(255, 255, 255, 0.8); }
+.topbar-right a { text-decoration: none; }
+.topbar-right a:hover { color: var(--white); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--navy); display: grid; place-items: center; font-weight: 600; font-size: 13px; }
+
+/* Header */
+.head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; padding: 36px 0 24px; }
+.head h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; }
+.head p { color: var(--muted); margin-top: 6px; }
+.sample { display: inline-block; margin-left: 8px; padding: 1px 10px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); font-size: 12px; color: var(--muted); vertical-align: middle; font-family: var(--font); letter-spacing: 0; }
+.range { display: inline-flex; padding: 4px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; }
+.range button { border: 0; background: none; padding: 7px 16px; border-radius: 999px; font-size: 14px; color: var(--muted); cursor: pointer; }
+.range button[aria-pressed="true"] { background: var(--navy); color: var(--white); }
+
+/* KPI tiles */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tile { background: var(--white); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--line); }
+.tile .label { font-size: 13px; color: var(--muted); }
+.tile .value { font-family: var(--font-display); font-size: clamp(1.75rem, 2.6vw, 2.25rem); font-weight: 500; color: var(--navy); letter-spacing: -0.02em; line-height: 1.2; margin-top: 6px; }
+.tile .delta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.tile .delta b { font-weight: 600; }
+.tile .delta b.up { color: #1e8449; }
+.tile .delta b.down { color: var(--alert); }
+
+/* Panels */
+.grid-2 { display: grid; grid-template-columns: 1.75fr 1fr; gap: 16px; margin-top: 16px; }
+.panel { background: var(--white); border-radius: var(--radius); border: 1px solid var(--line); padding: 22px 24px; min-width: 0; }
+.panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.panel h2 { font-size: 18px; }
+.panel-head small { color: var(--muted); font-size: 13px; }
+.link-btn { border: 0; background: none; padding: 0; color: var(--navy-2); font-size: 13px; cursor: pointer; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+
+/* Column chart */
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: 240px; overflow: visible; }
+.chart .grid line { stroke: var(--line); stroke-width: 1; }
+.chart .tick { fill: var(--faint); font-size: 11px; font-variant-numeric: tabular-nums; }
+.chart .bar { fill: var(--navy); }
+.chart .bar.dim { fill: #b8c2cc; }
+.chart .hit { fill: transparent; cursor: default; }
+.tooltip {
+  position: absolute; pointer-events: none; background: var(--navy); color: var(--white);
+  padding: 8px 12px; border-radius: 10px; font-size: 13px; line-height: 1.4; white-space: nowrap;
+  transform: translate(-50%, calc(-100% - 10px)); opacity: 0; transition: opacity .12s;
+}
+.tooltip strong { font-weight: 600; }
+.tooltip.show { opacity: 1; }
+.data-table { display: none; max-height: 240px; overflow: auto; }
+.chart-wrap.as-table .chart { display: none; }
+.chart-wrap.as-table .data-table { display: block; }
+
+/* Channel bars */
+.channels { display: grid; gap: 16px; }
+.ch-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 14px; }
+.ch-row .n { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 500; }
+.ch-row .n span { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.ch-track { grid-column: 1 / -1; height: 8px; background: var(--pale); border-radius: 4px; overflow: hidden; }
+.ch-track i { display: block; height: 100%; background: var(--navy); border-radius: 0 4px 4px 0; }
+
+/* Tables */
+.table-scroll { overflow-x: auto; margin: 0 -24px; padding: 0 24px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font-weight: 500; font-size: 12px; color: var(--muted); letter-spacing: 0.02em; padding: 0 12px 10px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 13px 12px 13px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td .sub { color: var(--muted); font-size: 13px; }
+.mono { font-variant-numeric: tabular-nums; color: var(--muted); }
+.status { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--faint); flex: none; }
+.status.ok::before { background: var(--success); }
+.status.warn::before { background: var(--warning); }
+.status.bad::before { background: var(--alert); }
+.status.info::before { background: var(--navy-2); }
+
+.search { width: 220px; max-width: 100%; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--pale); font-size: 14px; }
+.search:focus { outline: none; border-color: var(--navy); background: var(--white); }
+.empty { color: var(--muted); padding: 16px 0; display: none; }
+
+.foot { padding: 32px 0 48px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.foot a { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+
+/* Sign-in view */
+.login { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: 1fr 1fr; background: var(--white); }
+.login-side { background: var(--navy); color: var(--white); padding: clamp(28px, 5vw, 64px); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+.login-side img { height: 64px; width: auto; }
+.login-side h2 { color: var(--white); font-size: clamp(1.8rem, 3.4vw, 2.75rem); line-height: 1.1; margin-bottom: 20px; }
+.login-side ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; color: rgba(255, 255, 255, 0.85); }
+.login-side li { display: flex; gap: 12px; align-items: center; }
+.login-side li::before { content: ""; width: 18px; height: 2px; background: var(--gold); flex: none; }
+.login-side small { color: rgba(255, 255, 255, 0.6); font-size: 13px; }
+.login-side small a { color: var(--white); }
+.login-main { display: grid; place-items: center; padding: clamp(28px, 5vw, 64px) var(--gutter); }
+.login-form { width: 100%; max-width: 400px; }
+.login-form h1 { font-size: clamp(1.6rem, 2.6vw, 2rem); }
+.login-form > p { color: var(--muted); margin: 8px 0 28px; }
+.field { display: grid; gap: 6px; margin-bottom: 16px; }
+.field label { font-size: 14px; font-weight: 500; display: flex; justify-content: space-between; }
+.field label a { font-weight: 400; color: var(--navy-2); font-size: 13px; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+.field input { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--pale); font-size: 15px; }
+.field input:focus { outline: none; border-color: var(--navy); background: var(--white); }
+.field .err { display: none; color: var(--alert); font-size: 13px; }
+.field.invalid input { border-color: var(--alert); }
+.field.invalid .err { display: block; }
+.remember { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); margin: 4px 0 24px; }
+.remember input { width: 16px; height: 16px; accent-color: var(--navy); }
+.btn-gold { width: 100%; height: 48px; border: 0; border-radius: 999px; background: var(--gold); color: var(--navy); font-weight: 600; font-size: 15px; cursor: pointer; }
+.btn-gold:hover { background: #c29d2a; }
+.demo-note { margin-top: 20px; padding: 12px 14px; border-radius: 12px; background: var(--pale); color: var(--muted); font-size: 13px; }
+.login-help { margin-top: 24px; font-size: 14px; color: var(--muted); text-align: center; }
+.login-help a { color: var(--navy-2); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+.signout { border: 1px solid rgba(255, 255, 255, 0.3); background: none; color: var(--white); border-radius: 999px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.signout:hover { border-color: var(--gold); }
+[hidden] { display: none !important; }
+
+@media (max-width: 1000px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 800px) {
+  .login { grid-template-columns: 1fr; }
+  .login-side { gap: 24px; }
+  .login-side ul, .login-side small { display: none; }
+  .login-side img { height: 48px; }
+}
+@media (max-width: 560px) {
+  .kpis { gap: 10px; }
+  .tile { padding: 16px; }
+  .topbar-right .hide-sm { display: none; }
+  .topbar img { height: 38px; }
+  .panel { padding: 18px 16px; }
+  .table-scroll { margin: 0 -16px; padding: 0 16px; }
+  .range button { padding: 6px 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="login" id="login-view">
+  <aside class="login-side">
+    <a href="index.html" aria-label="Sonic Fulfillment home"><img src="assets/logo-white.png" alt="Sonic Fulfillment" width="777" height="455"></a>
+    <div>
+      <h2>Your inventory and orders, live.</h2>
+      <ul>
+        <li>Stock levels for every SKU</li>
+        <li>Orders shipped, in progress and delivered</li>
+        <li>Tracking numbers for every package</li>
+        <li>Orders by sales channel</li>
+      </ul>
+    </div>
+    <small>Need an account? <a href="index.html#quote">Get a quote</a> or email <a href="mailto:info@sonicfulfillment.com">info@sonicfulfillment.com</a></small>
+  </aside>
+  <main class="login-main">
+    <form class="login-form" id="login-form" novalidate>
+      <h1>Client login</h1>
+      <p>Sign in to see your fulfillment dashboard.</p>
+      <div class="field">
+        <label for="l-email">Email</label>
+        <input id="l-email" type="email" autocomplete="username" required aria-describedby="l-email-err">
+        <span class="err" id="l-email-err">Enter the email you use with Sonic Fulfillment.</span>
+      </div>
+      <div class="field">
+        <label for="l-pass">Password <a href="mailto:info@sonicfulfillment.com?subject=Password%20reset">Forgot password?</a></label>
+        <input id="l-pass" type="password" autocomplete="current-password" required aria-describedby="l-pass-err">
+        <span class="err" id="l-pass-err">Enter your password.</span>
+      </div>
+      <label class="remember"><input type="checkbox" id="l-remember"> Keep me signed in</label>
+      <button class="btn-gold" type="submit">Sign in</button>
+      <p class="demo-note">Preview: any email and password opens the demo dashboard with sample data.</p>
+      <p class="login-help"><a href="index.html">Back to sonicfulfillment.com</a></p>
+    </form>
+  </main>
+</div>
+
+<div id="app-view" hidden>
+<header class="topbar">
+  <div class="wrap">
+    <a href="index.html" aria-label="Sonic Fulfillment home"><img src="assets/logo-white.png" alt="Sonic Fulfillment" width="777" height="455"></a>
+    <div class="topbar-right">
+      <a class="hide-sm" href="mailto:info@sonicfulfillment.com">Support</a>
+      <span class="hide-sm" id="acct-name">Demo Brand Co.</span>
+      <span class="avatar" aria-hidden="true" id="acct-initials">DB</span>
+      <button class="signout" type="button" id="signout">Sign out</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="head">
+    <div>
+      <h1>Your fulfillment overview <span class="sample">Sample data</span></h1>
+      <p id="updated">Stock and orders as of today</p>
+    </div>
+    <div class="range" role="group" aria-label="Date range">
+      <button type="button" data-days="7" aria-pressed="false">7 days</button>
+      <button type="button" data-days="30" aria-pressed="true">30 days</button>
+      <button type="button" data-days="90" aria-pressed="false">90 days</button>
+    </div>
+  </div>
+
+  <section class="kpis" aria-label="Key numbers">
+    <div class="tile"><div class="label">Orders shipped</div><div class="value" id="k-shipped">–</div><div class="delta" id="k-shipped-d"></div></div>
+    <div class="tile"><div class="label">Shipped on time</div><div class="value" id="k-ontime">–</div><div class="delta" id="k-ontime-d"></div></div>
+    <div class="tile"><div class="label">Units in stock</div><div class="value" id="k-units">–</div><div class="delta" id="k-units-d"></div></div>
+    <div class="tile"><div class="label">Awaiting shipment</div><div class="value" id="k-open">–</div><div class="delta">Orders received, not yet shipped</div></div>
+  </section>
+
+  <div class="grid-2">
+    <section class="panel chart-wrap" id="chart-wrap" aria-labelledby="c-title">
+      <div class="panel-head">
+        <h2 id="c-title">Orders shipped per day</h2>
+        <button class="link-btn" type="button" id="toggle-table" aria-pressed="false">View as table</button>
+      </div>
+      <div class="chart" id="chart">
+        <svg id="chart-svg" role="img" aria-label="Column chart of orders shipped per day"></svg>
+        <div class="tooltip" id="tip" role="status"></div>
+      </div>
+      <div class="data-table" id="chart-table"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="ch-title">
+      <div class="panel-head"><h2 id="ch-title">Orders by sales channel</h2><small id="ch-range"></small></div>
+      <div class="channels" id="channels"></div>
+    </section>
+  </div>
+
+  <section class="panel" style="margin-top:16px" aria-labelledby="inv-title">
+    <div class="panel-head">
+      <h2 id="inv-title">Inventory</h2>
+      <input class="search" id="inv-search" type="search" placeholder="Search SKU or product" aria-label="Search inventory">
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Product</th><th>SKU</th><th class="num">On hand</th><th class="num">Reserved</th><th class="num">Available</th><th>Status</th></tr></thead>
+        <tbody id="inv-body"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="inv-empty">No products match your search.</p>
+  </section>
+
+  <section class="panel" style="margin-top:16px" aria-labelledby="ord-title">
+    <div class="panel-head"><h2 id="ord-title">Recent orders</h2><small>Latest 8</small></div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Order</th><th>Channel</th><th>Customer</th><th>Placed</th><th>Carrier</th><th>Tracking</th><th>Status</th></tr></thead>
+        <tbody id="ord-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span>Questions about an order? Email <a href="mailto:info@sonicfulfillment.com">info@sonicfulfillment.com</a></span>
+    <a href="index.html">Back to sonicfulfillment.com</a>
+  </div>
+</main>
+</div>
+
+<script>
+(function () {
+  // ---- Sample data (deterministic, so the demo looks the same on every load) ----
+  var seed = 7;
+  function rand() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var daily = [];
+  for (var i = 179; i >= 0; i--) {
+    var d = new Date(today); d.setDate(d.getDate() - i);
+    var dow = d.getDay();
+    var trend = 105 + (179 - i) * 0.22;
+    var weekend = (dow === 0 || dow === 6) ? 0.45 : 1;
+    daily.push({ date: d, orders: Math.round((trend + rand() * 40) * weekend), late: Math.round(rand() * 2.2) });
+  }
+  var channelMix = [
+    ['Shopify', 0.38], ['Amazon', 0.27], ['TikTok Shop', 0.16], ['Whatnot', 0.12], ['eBay', 0.07]
+  ];
+  var inventory = [
+    ['Classic Crew Tee, Black / M', 'SF-TEE-BLK-M', 1840, 64],
+    ['Classic Crew Tee, White / L', 'SF-TEE-WHT-L', 1215, 41],
+    ['Everyday Hoodie, Navy / M', 'SF-HOOD-NVY-M', 612, 22],
+    ['Everyday Hoodie, Gray / S', 'SF-HOOD-GRY-S', 88, 19],
+    ['Canvas Tote Bag', 'SF-TOTE-NAT', 2390, 37],
+    ['Enamel Mug, 12 oz', 'SF-MUG-12', 46, 12],
+    ['Gift Set: Tee + Mug', 'SF-KIT-GIFT', 305, 16],
+    ['Trucker Cap, Navy', 'SF-CAP-NVY', 0, 0],
+    ['Sticker Pack (5)', 'SF-STK-5', 9420, 110],
+    ['Phone Case, Clear', 'SF-CASE-CLR', 1504, 28]
+  ];
+  var orders = [
+    ['#10482', 'Shopify', 'M. Rivera', 0, 'USPS', '9400 1118 9922 3845 2210 47', 'Processing'],
+    ['#10481', 'Whatnot', 'J. Chen', 0, 'USPS', '9400 1118 9922 3845 2198 03', 'Shipped'],
+    ['#10480', 'Amazon', 'A. Patel', 0, 'UPS', '1Z 999 AA1 01 2345 6784', 'Shipped'],
+    ['#10479', 'TikTok Shop', 'S. Nguyen', 1, 'USPS', '9400 1118 9922 3845 2187 60', 'In transit'],
+    ['#10478', 'Shopify', 'D. Okafor', 1, 'FedEx', '7489 2210 3345', 'In transit'],
+    ['#10477', 'eBay', 'K. Müller', 2, 'DHL', '1234 5678 90', 'Delivered'],
+    ['#10476', 'Shopify', 'L. Brooks', 2, 'UPS', '1Z 999 AA1 01 2345 6701', 'Address issue'],
+    ['#10475', 'Amazon', 'R. Santos', 3, 'USPS', '9400 1118 9922 3845 2150 12', 'Delivered']
+  ];
+
+  var fmt = new Intl.NumberFormat('en-US');
+  var dfShort = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
+
+  // ---- KPIs ----
+  function sum(arr, key) { return arr.reduce(function (a, r) { return a + r[key]; }, 0); }
+  function pct(a, b) { return b ? ((a - b) / b) * 100 : 0; }
+  function deltaHtml(v, suffix, goodUp) {
+    var up = v >= 0, good = goodUp ? up : !up;
+    return '<b class="' + (good ? 'up' : 'down') + '">' + (up ? '+' : '−') + Math.abs(v).toFixed(1) + suffix + '</b> vs previous ' + currentDays + ' days';
+  }
+
+  var currentDays = 30;
+  function render(days) {
+    currentDays = days;
+    var cur = daily.slice(-days), prev = daily.slice(-days * 2, -days);
+    var shipped = sum(cur, 'orders'), prevShipped = sum(prev, 'orders');
+    var onTime = 100 - (sum(cur, 'late') / shipped) * 100;
+    var prevOnTime = 100 - (sum(prev, 'late') / prevShipped) * 100;
+    document.getElementById('k-shipped').textContent = fmt.format(shipped);
+    document.getElementById('k-shipped-d').innerHTML = deltaHtml(pct(shipped, prevShipped), '%', true);
+    document.getElementById('k-ontime').textContent = onTime.toFixed(1) + '%';
+    document.getElementById('k-ontime-d').innerHTML = deltaHtml(onTime - prevOnTime, ' pts', true);
+
+    var units = inventory.reduce(function (a, r) { return a + r[2]; }, 0);
+    document.getElementById('k-units').textContent = fmt.format(units);
+    var low = inventory.filter(function (r) { return r[2] - r[3] < 100; }).length;
+    document.getElementById('k-units-d').textContent = low + ' SKUs low or out of stock';
+    document.getElementById('k-open').textContent = fmt.format(Math.round(daily[daily.length - 1].orders * 0.4));
+
+    renderChart(cur);
+    renderChannels(shipped, days);
+  }
+
+  // ---- Column chart ----
+  var svg = document.getElementById('chart-svg');
+  var tip = document.getElementById('tip');
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(name, attrs) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function niceMax(v) {
+    var step = Math.pow(10, Math.floor(Math.log10(v)));
+    var m = Math.ceil(v / step) * step;
+    return m < v * 1.08 ? m + step / 2 : m;
+  }
+  var lastData = null;
+  function renderChart(data) {
+    lastData = data;
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var W = svg.clientWidth || 700, H = 240, padL = 36, padB = 26, padT = 8;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var max = niceMax(Math.max.apply(null, data.map(function (d) { return d.orders; })));
+    var plotW = W - padL, plotH = H - padB - padT;
+    var y = function (v) { return padT + plotH - (v / max) * plotH; };
+
+    var g = el('g', { 'class': 'grid' });
+    for (var t = 0; t <= 4; t++) {
+      var v = Math.round(max * t / 4), yy = y(v);
+      g.appendChild(el('line', { x1: padL, x2: W, y1: yy, y2: yy }));
+      var lab = el('text', { x: padL - 8, y: yy + 4, 'text-anchor': 'end', 'class': 'tick' });
+      lab.textContent = fmt.format(v); g.appendChild(lab);
+    }
+    svg.appendChild(g);
+
+    var slot = plotW / data.length;
+    var bw = Math.max(2, Math.min(24, slot - 2));
+    var labelEvery = Math.ceil(data.length / 7);
+    data.forEach(function (d, i) {
+      var x = padL + i * slot + (slot - bw) / 2, top = y(d.orders), h = padT + plotH - top;
+      var r = Math.min(4, bw / 2, h);
+      var path = 'M' + x + ',' + (top + h) + 'V' + (top + r) + 'Q' + x + ',' + top + ' ' + (x + r) + ',' + top +
+                 'H' + (x + bw - r) + 'Q' + (x + bw) + ',' + top + ' ' + (x + bw) + ',' + (top + r) + 'V' + (top + h) + 'Z';
+      var bar = el('path', { d: path, 'class': 'bar' });
+      svg.appendChild(bar);
+      if ((data.length - 1 - i) % labelEvery === 0) {
+        var tl = el('text', { x: x + bw / 2, y: H - 6, 'text-anchor': 'middle', 'class': 'tick' });
+        tl.textContent = dfShort.format(d.date); svg.appendChild(tl);
+      }
+      var hit = el('rect', { x: padL + i * slot, y: padT, width: slot, height: plotH, 'class': 'hit' });
+      hit.addEventListener('mouseenter', function () {
+        svg.querySelectorAll('.bar').forEach(function (b) { b.classList.toggle('dim', b !== bar); });
+        tip.innerHTML = dfShort.format(d.date) + '<br><strong>' + fmt.format(d.orders) + '</strong> orders shipped';
+        tip.style.left = ((x + bw / 2) / W * 100) + '%';
+        tip.style.top = (top / H * 240) + 'px';
+        tip.classList.add('show');
+      });
+      svg.appendChild(hit);
+    });
+    svg.onmouseleave = function () {
+      tip.classList.remove('show');
+      svg.querySelectorAll('.bar').forEach(function (b) { b.classList.remove('dim'); });
+    };
+
+    var rows = data.slice().reverse().map(function (d) {
+      return '<tr><td>' + dfShort.format(d.date) + '</td><td class="num">' + fmt.format(d.orders) + '</td></tr>';
+    }).join('');
+    document.getElementById('chart-table').innerHTML =
+      '<table><thead><tr><th>Date</th><th class="num">Orders shipped</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+  var toggle = document.getElementById('toggle-table');
+  toggle.addEventListener('click', function () {
+    var on = document.getElementById('chart-wrap').classList.toggle('as-table');
+    toggle.setAttribute('aria-pressed', String(on));
+    toggle.textContent = on ? 'View as chart' : 'View as table';
+  });
+  window.addEventListener('resize', function () { if (lastData) renderChart(lastData); });
+
+  // ---- Channels ----
+  function renderChannels(total, days) {
+    document.getElementById('ch-range').textContent = 'Last ' + days + ' days';
+    var maxShare = channelMix[0][1];
+    document.getElementById('channels').innerHTML = channelMix.map(function (c) {
+      var n = Math.round(total * c[1]);
+      return '<div class="ch-row"><span>' + c[0] + '</span><span class="n">' + fmt.format(n) +
+        '<span>' + Math.round(c[1] * 100) + '%</span></span>' +
+        '<div class="ch-track"><i style="width:' + (c[1] / maxShare * 100) + '%"></i></div></div>';
+    }).join('');
+  }
+
+  // ---- Inventory ----
+  function stockStatus(avail) {
+    if (avail <= 0) return '<span class="status bad">Out of stock</span>';
+    if (avail < 100) return '<span class="status warn">Low stock</span>';
+    return '<span class="status ok">In stock</span>';
+  }
+  var invBody = document.getElementById('inv-body');
+  invBody.innerHTML = inventory.map(function (r) {
+    var avail = r[2] - r[3];
+    return '<tr data-q="' + (r[0] + ' ' + r[1]).toLowerCase() + '"><td>' + r[0] + '</td><td class="mono">' + r[1] +
+      '</td><td class="num">' + fmt.format(r[2]) + '</td><td class="num">' + fmt.format(r[3]) +
+      '</td><td class="num">' + fmt.format(Math.max(0, avail)) + '</td><td>' + stockStatus(avail) + '</td></tr>';
+  }).join('');
+  document.getElementById('inv-search').addEventListener('input', function (e) {
+    var q = e.target.value.trim().toLowerCase(), shown = 0;
+    invBody.querySelectorAll('tr').forEach(function (tr) {
+      var match = tr.getAttribute('data-q').indexOf(q) !== -1;
+      tr.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    document.getElementById('inv-empty').style.display = shown ? 'none' : 'block';
+  });
+
+  // ---- Orders ----
+  var statusClass = { 'Processing': 'info', 'Shipped': 'ok', 'In transit': 'ok', 'Delivered': 'ok', 'Address issue': 'bad' };
+  document.getElementById('ord-body').innerHTML = orders.map(function (o) {
+    var d = new Date(today); d.setDate(d.getDate() - o[3]);
+    var when = o[3] === 0 ? 'Today' : o[3] === 1 ? 'Yesterday' : dfShort.format(d);
+    var tracking = o[6] === 'Processing' ? '<span class="sub">Label pending</span>' : '<span class="mono">' + o[5] + '</span>';
+    return '<tr><td><strong style="font-weight:500">' + o[0] + '</strong></td><td>' + o[1] + '</td><td>' + o[2] +
+      '</td><td>' + when + '</td><td>' + o[4] + '</td><td>' + tracking + '</td><td><span class="status ' +
+      statusClass[o[6]] + '">' + o[6] + '</span></td></tr>';
+  }).join('');
+
+  // ---- Date range ----
+  document.querySelectorAll('.range button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.range button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      render(Number(b.getAttribute('data-days')));
+    });
+  });
+  document.getElementById('updated').textContent =
+    'Stock and orders as of ' + new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(today);
+  render(30);
+
+  // ---- Sign-in (preview only: replace with real authentication before launch) ----
+  var KEY = 'sf_client_session';
+  function store(remember) { try { return remember ? localStorage : sessionStorage; } catch (e) { return null; } }
+  function readSession() {
+    try { return JSON.parse(sessionStorage.getItem(KEY) || localStorage.getItem(KEY) || 'null'); } catch (e) { return null; }
+  }
+  function showApp(session) {
+    var name = session && session.company || 'Demo Brand Co.';
+    document.getElementById('acct-name').textContent = name;
+    document.getElementById('acct-initials').textContent = name.split(/\s+/).map(function (w) { return w[0]; }).join('').slice(0, 2).toUpperCase();
+    document.getElementById('login-view').hidden = true;
+    document.getElementById('app-view').hidden = false;
+    window.scrollTo(0, 0);
+    window.dispatchEvent(new Event('resize'));
+  }
+  function showLogin() {
+    document.getElementById('app-view').hidden = true;
+    document.getElementById('login-view').hidden = false;
+  }
+  document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    [['l-email', function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }],
+     ['l-pass', function (v) { return v.length > 0; }]].forEach(function (pair) {
+      var input = document.getElementById(pair[0]), valid = pair[1](input.value);
+      input.parentElement.classList.toggle('invalid', !valid);
+      input.setAttribute('aria-invalid', String(!valid));
+      if (!valid && ok) { input.focus(); ok = false; }
+    });
+    if (!ok) return;
+    var domain = document.getElementById('l-email').value.trim().split('@')[1].split('.')[0];
+    var generic = ['gmail', 'yahoo', 'outlook', 'hotmail', 'icloud', 'aol'];
+    var company = generic.indexOf(domain.toLowerCase()) === -1 ? domain.charAt(0).toUpperCase() + domain.slice(1) : 'Demo Brand Co.';
+    var session = { company: company };
+    var s = store(document.getElementById('l-remember').checked);
+    try { if (s) s.setItem(KEY, JSON.stringify(session)); } catch (err) {}
+    showApp(session);
+  });
+  document.getElementById('signout').addEventListener('click', function () {
+    try { sessionStorage.removeItem(KEY); localStorage.removeItem(KEY); } catch (e) {}
+    document.getElementById('l-pass').value = '';
+    showLogin();
+  });
+  var existing = readSession();
+  if (existing) showApp(existing);
+})();
+</script>
+</body>
+</html>

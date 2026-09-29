@@ -1,0 +1,16 @@
+# Secrets (never commit)
+.env
+credentials.json
+token.json
+
+# Temporary / regenerated files
+.tmp/
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+.claude/settings.local.json
+
+# Third-party design references (not ours to publish)
+dribbble.com-*.png
