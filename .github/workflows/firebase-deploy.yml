@@ -1,0 +1,51 @@
+name: Deploy to Firebase
+
+# Publishes the website, the quote function and the database rules whenever
+# main changes. It stays switched off until the repository has:
+#   Variable  FIREBASE_PROJECT_ID        the Firebase project ID
+#   Secret    FIREBASE_SERVICE_ACCOUNT   a service account key (JSON) for that project
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "functions/**"
+      - "firebase.json"
+      - "firestore.rules"
+      - ".github/workflows/firebase-deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: firebase-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ vars.FIREBASE_PROJECT_ID != '' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: functions/package-lock.json
+
+      - name: Install function dependencies
+        run: npm ci
+        working-directory: functions
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
+      - name: Deploy
+        run: >
+          npx --yes firebase-tools@latest deploy
+          --only hosting,functions,firestore:rules
+          --project "${{ vars.FIREBASE_PROJECT_ID }}"
+          --non-interactive --force
