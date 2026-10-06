@@ -4,456 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sonic Fulfillment | 3PL fulfillment in Southern California</title>
-<meta name="description" content="Sonic Fulfillment receives, stores, picks, packs and ships orders for Amazon FBA, Shopify, eBay, TikTok Shop and Whatnot sellers from Southern California, with DHL, FedEx, USPS and UPS shipping nationwide and internationally.">
+<meta name="description" content="Sonic Fulfillment receives, stores, picks, packs and ships orders for online sellers on marketplaces, social and live selling apps, and their own stores, from Southern California to customers nationwide and worldwide.">
+<link rel="canonical" href="https://sonicfulfillment.com/">
 <link rel="icon" type="image/png" href="assets/mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* Brand tokens: Sonic Fulfillment Brand Guidelines, Navy & Gold Edition (Sept 2026) */
-:root {
-  --navy: #001f3f;      /* Navy Deep: headers, key elements, navigation */
-  --navy-2: #003d5c;    /* Navy Medium: accents, hover states */
-  --gold: #d4af37;      /* Premium Gold: CTAs and accents, used sparingly */
-  --gold-2: #c29d2a;    /* Gold hover */
-  --pale: #f5f5f5;      /* Off White */
-  --line: #e8e8e8;      /* Light Gray */
-  --white: #ffffff;     /* Pure White */
-  --success: #27ae60;
-  --alert: #c0392b;
-  --warning: #f39c12;
-  --ink: #1a2433;
-  --muted: #5f6368;
-
-  --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
-  --wrap: 1240px;
-  --gutter: clamp(16px, 3vw, 32px);
-  --radius: 24px;
-  --radius-sm: 16px;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
-body {
-  margin: 0;
-  background: var(--white);
-  color: var(--ink);
-  font: 400 16px/1.7 var(--font);
-  overflow-x: hidden;
-}
-::selection { background: rgba(212, 175, 55, 0.35); color: var(--ink); }
-img { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
-h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.025em; line-height: 1.08; color: var(--navy); }
-p { margin: 0; }
-ul, ol { margin: 0; padding: 0; list-style: none; }
-button { font: inherit; }
-:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 999px; }
-
-.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
-section { scroll-margin-top: 24px; }
-
-/* Buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  height: 48px; padding: 0 24px; border-radius: 999px;
-  font-size: 15px; font-weight: 500; letter-spacing: -0.01em;
-  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
-  transition: background .2s, color .2s, transform .2s, border-color .2s;
-}
-.btn-light { background: var(--white); color: var(--ink); }
-.btn-light:hover { background: var(--pale); }
-.btn-dark { background: var(--navy); color: var(--white); }
-.btn-dark:hover { background: var(--navy-2); }
-.btn-gold { background: var(--gold); color: var(--navy); font-weight: 600; }
-.btn-gold:hover { background: var(--gold-2); }
-.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
-.btn-ghost:hover { border-color: var(--ink); }
-.btn-circle {
-  width: 48px; height: 48px; padding: 0; border-radius: 50%;
-  display: inline-grid; place-items: center; flex: none;
-}
-.btn-circle svg { width: 18px; height: 18px; }
-.btn-pair { display: inline-flex; align-items: center; gap: 6px; }
-.btn-pair:hover .btn-circle { transform: rotate(45deg); }
-
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: var(--muted);
-}
-.eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--gold); }
-
-.section-title { font-size: clamp(2rem, 4.2vw, 3.25rem); }
-.section-lead { color: var(--muted); font-size: 17px; max-width: 46ch; }
-
-/* ---------- Hero ---------- */
-.hero-shell { padding: 16px; }
-.hero {
-  position: relative; isolation: isolate; overflow: hidden;
-  min-height: min(900px, calc(100vh - 32px)); min-height: min(900px, calc(100svh - 32px));
-  border-radius: var(--radius); color: var(--white);
-  display: flex; flex-direction: column;
-  background: var(--navy) url("assets/img/hero-warehouse.jpg") center 40% / cover no-repeat;
-}
-.hero::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(0, 31, 63, 0.55) 0%, rgba(0, 31, 63, 0.25) 35%, rgba(0, 31, 63, 0.82) 100%),
-    linear-gradient(90deg, rgba(0, 31, 63, 0.55) 0%, rgba(0, 31, 63, 0) 60%);
-}
-
-.nav {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 20px clamp(20px, 3vw, 36px);
-}
-.nav .brand img { height: 60px; width: auto; }
-.nav-links {
-  display: flex; gap: 4px; padding: 5px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-}
-.nav-links a {
-  padding: 7px 18px; border-radius: 999px; font-size: 14px; line-height: 1.5;
-  color: rgba(255, 255, 255, 0.88); transition: background .2s, color .2s;
-}
-.nav-links a:hover { background: rgba(255, 255, 255, 0.14); color: var(--white); }
-.nav-links a[aria-current="page"] { background: var(--white); color: var(--ink); }
-.nav .btn { height: 42px; padding: 0 20px; font-size: 14px; }
-.nav-actions { display: flex; align-items: center; gap: 10px; }
-.btn-outline { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.45); }
-.btn-outline:hover { border-color: var(--gold); background: rgba(255, 255, 255, 0.08); }
-.btn-outline svg { width: 16px; height: 16px; }
-.nav-links .mobile-only { display: none; }
-.menu-btn {
-  display: none; width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.22);
-  color: var(--white); cursor: pointer; place-items: center;
-}
-.menu-btn svg { width: 20px; height: 20px; }
-
-.hero-body {
-  flex: 1; display: grid; grid-template-columns: 1.4fr 1fr; align-items: end; gap: 40px;
-  padding: 40px clamp(20px, 3vw, 36px) 48px;
-}
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px;
-  font-size: 14px; color: rgba(255, 255, 255, 0.9);
-}
-.hero-tag .dots { display: inline-flex; gap: 3px; }
-.hero-tag .dots i { width: 14px; height: 14px; border-radius: 3px; background: var(--gold); display: grid; place-items: center; }
-.hero-tag .dots i svg { width: 9px; height: 9px; }
-.hero-tag u { text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, 0.5); }
-.hero h1 { font-size: clamp(2.75rem, 6.4vw, 5.75rem); line-height: 1.02; letter-spacing: -0.035em; color: var(--white); }
-.hero h1 em { font-style: normal; color: var(--gold); }
-.hero-side { justify-self: end; max-width: 360px; padding-bottom: 12px; }
-.hero-side p { font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, 0.88); margin-bottom: 24px; }
-.hero-side .btn-circle { background: var(--white); color: var(--ink); }
-
-.hero-foot {
-  display: flex; align-items: center; justify-content: space-between; gap: 20px;
-  margin: 0 clamp(20px, 3vw, 36px); padding: 22px 0 26px;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  font-size: 14px; color: rgba(255, 255, 255, 0.85);
-}
-.hero-groups { display: flex; align-items: center; gap: 12px 40px; flex-wrap: wrap; }
-.hero-foot .carriers { display: flex; align-items: center; gap: 8px 10px; flex-wrap: wrap; }
-.hero-foot .chip {
-  padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
-  background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2);
-}
-.scroll-down { display: inline-flex; align-items: center; gap: 8px; }
-.scroll-down svg { width: 16px; height: 16px; animation: bob 2s ease-in-out infinite; }
-@keyframes bob { 50% { transform: translateY(3px); } }
-@media (prefers-reduced-motion: reduce) { .scroll-down svg { animation: none; } }
-
-/* ---------- Intro strip ---------- */
-.intro { padding: clamp(72px, 9vw, 120px) 0 0; }
-.intro-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; }
-.intro p.big { font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.3; letter-spacing: -0.02em; }
-.intro p.big span { color: #9a9a9a; }
-.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
-.stat { border-top: 1px solid var(--line); padding-top: 18px; }
-.stat strong { display: block; font-family: var(--font-display); color: var(--navy); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; }
-.stat span { color: var(--muted); font-size: 14px; }
-
-/* ---------- Services carousel ---------- */
-.services { padding: clamp(80px, 10vw, 128px) 0; }
-.services-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
-.services-head .section-title { max-width: 16ch; }
-.arrows { display: flex; gap: 12px; flex: none; }
-.arrow {
-  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
-  border: 1px solid var(--line); background: var(--white); color: var(--ink);
-  transition: background .2s, border-color .2s, opacity .2s;
-}
-.arrow svg { width: 18px; height: 18px; }
-.arrow:hover { border-color: var(--ink); }
-.arrow.next { background: var(--navy); border-color: var(--navy); color: var(--white); }
-.arrow.next:hover { background: var(--navy-2); }
-.arrow:disabled { opacity: 0.35; cursor: default; }
-
-.track {
-  display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
-  scrollbar-width: none; padding-bottom: 4px;
-  scroll-padding-left: var(--gutter);
-}
-.track::-webkit-scrollbar { display: none; }
-.card {
-  position: relative; flex: 0 0 clamp(280px, 38%, 480px); aspect-ratio: 4 / 4.2;
-  border-radius: var(--radius-sm); overflow: hidden; scroll-snap-align: start;
-  color: var(--white); background: var(--navy);
-}
-.card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.card:hover img { transform: scale(1.04); }
-.card::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0, 31, 63, 0) 40%, rgba(0, 31, 63, 0.88) 100%);
-}
-.card-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 28px; }
-.card-portal { background: var(--navy); display: flex; flex-direction: column; justify-content: space-between; }
-.card-portal::after { display: none; }
-.card-portal .card-body { position: static; }
-.portal-preview {
-  margin: 28px 28px 0;
-  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 14px; padding: 18px 20px; display: grid; gap: 12px;
-}
-.pp-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: rgba(255, 255, 255, 0.7); border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
-.pp-row strong { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--white); }
-.pp-bars { display: flex; align-items: flex-end; gap: 8px; height: 64px; padding-top: 6px; }
-.pp-bars i { flex: 1; max-width: 24px; background: rgba(255, 255, 255, 0.28); border-radius: 4px 4px 0 0; }
-.pp-bars i:last-child { background: var(--gold); }
-.portal-link { display: inline-block; margin-top: 8px; color: var(--gold); font-weight: 500; }
-.card-portal:hover .portal-link { text-decoration: underline; text-underline-offset: 4px; }
-.card h3 { color: var(--white); font-size: clamp(1.5rem, 2.2vw, 1.9rem); margin-bottom: 10px; }
-.card p { font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, 0.82); max-width: 38ch; }
-
-/* ---------- Client dashboard overview ---------- */
-.portal { padding: 0 0 clamp(80px, 10vw, 128px); }
-.portal-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
-.portal-grid > * { min-width: 0; }
-.portal-copy .section-title { margin: 16px 0 20px; }
-.features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
-.feature { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 20px; }
-.feature h3 { font-size: 17px; letter-spacing: -0.01em; margin-bottom: 4px; }
-.feature p { color: var(--muted); font-size: 14px; line-height: 1.55; }
-.portal-copy .btn-pair { margin-top: 32px; }
-.portal-copy .btn-circle { background: var(--navy); color: var(--gold); }
-
-.demo-tag { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; margin-bottom: 14px; }
-.demo { border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: 0 24px 60px -30px rgba(0, 31, 63, 0.35); overflow: hidden; }
-.demo-bar { display: flex; align-items: center; gap: 14px; padding: 14px 20px; background: var(--navy); color: rgba(255, 255, 255, 0.8); font-size: 13px; }
-.demo-bar img { height: 26px; width: auto; }
-.demo-tabs { display: flex; gap: 4px; padding: 12px 16px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
-.demo-tabs::-webkit-scrollbar { display: none; }
-.demo-tabs button { border: 0; background: none; padding: 8px 16px; border-radius: 999px; font-size: 14px; color: var(--muted); cursor: pointer; white-space: nowrap; }
-.demo-tabs button:hover { color: var(--navy); background: var(--pale); }
-.demo-tabs button[aria-selected="true"] { background: var(--navy); color: var(--white); }
-.demo-panel { padding: 20px; min-height: 330px; }
-.demo-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.demo-kpi { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
-.demo-kpi span { display: block; font-size: 12px; color: var(--muted); }
-.demo-kpi strong { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--navy); letter-spacing: -0.02em; }
-.demo-chart { border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-top: 12px; }
-.demo-chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 14px; }
-.demo-chart-head small { font-weight: 400; color: var(--muted); font-size: 12px; }
-.demo-bars { display: flex; align-items: flex-end; justify-content: space-between; gap: 6px; height: 150px; border-bottom: 1px solid var(--line); }
-.demo-bars i { position: relative; flex: 1; max-width: 24px; background: var(--navy); border-radius: 4px 4px 0 0; transition: opacity .15s; }
-.demo-bars:hover i { opacity: 0.35; }
-.demo-bars i:hover { opacity: 1; }
-.demo-bars i:hover::after {
-  content: attr(data-tip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-  background: var(--navy); color: var(--white); font-style: normal; font-size: 12px; white-space: nowrap;
-  padding: 5px 10px; border-radius: 8px; pointer-events: none; z-index: 2;
-}
-.demo-axis { display: flex; justify-content: space-between; font-size: 11px; color: #8a8f96; margin-top: 6px; }
-.demo table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.demo th { text-align: left; font-size: 12px; font-weight: 500; color: var(--muted); padding: 0 10px 10px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.demo td { padding: 12px 10px 12px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.demo tr:last-child td { border-bottom: 0; }
-.demo .num { text-align: right; font-variant-numeric: tabular-nums; }
-.demo-scroll { overflow-x: auto; }
-.st { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; }
-.st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
-.st.warn::before { background: var(--warning); }
-.st.bad::before { background: var(--alert); }
-.st.info::before { background: var(--navy-2); }
-.carrier-rows { display: grid; gap: 14px; margin-top: 12px; }
-.carrier-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 14px; }
-.carrier-row b { font-weight: 500; font-variant-numeric: tabular-nums; }
-.carrier-row .trk { grid-column: 1 / -1; height: 8px; background: var(--pale); border-radius: 4px; overflow: hidden; }
-.carrier-row .trk i { display: block; height: 100%; background: var(--navy); border-radius: 0 4px 4px 0; }
-.demo-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 20px; border-top: 1px solid var(--line); background: var(--pale); font-size: 13px; color: var(--muted); }
-.demo-foot .btn { height: 40px; padding: 0 18px; font-size: 14px; }
-
-/* ---------- How it works ---------- */
-.how { padding: clamp(80px, 10vw, 128px) 0; background: var(--pale); border-radius: var(--radius); margin: 0 16px; }
-.how-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 56px; }
-.how-head .section-lead { justify-self: end; }
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
-.step {
-  background: var(--white); border-radius: var(--radius-sm); padding: 28px 24px 32px;
-  display: flex; flex-direction: column; gap: 14px; min-height: 280px;
-}
-.step-num {
-  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--pale); font-size: 14px; font-weight: 500; margin-bottom: auto;
-}
-.step:last-child .step-num { background: var(--navy); color: var(--white); }
-.step h3 { font-size: 22px; letter-spacing: -0.02em; margin-top: 40px; }
-.step p { color: var(--muted); font-size: 15px; line-height: 1.6; }
-
-/* ---------- Who we serve ---------- */
-.fit { padding: clamp(80px, 10vw, 128px) 0; }
-.fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
-.fit-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 5 / 5.4; }
-.fit-media img { width: 100%; height: 100%; object-fit: cover; }
-.fit-badge {
-  position: absolute; left: 20px; right: 20px; bottom: 20px;
-  background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--radius-sm); padding: 20px 24px;
-}
-.fit-badge strong { display: block; font-family: var(--font-display); font-size: clamp(2rem, 3.6vw, 2.75rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1.1; color: var(--navy); }
-.fit-badge span { font-size: 14px; color: var(--muted); }
-.fit-copy .section-title { margin: 16px 0 20px; }
-.values { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; margin-top: 40px; }
-.value h3 { font-size: 19px; letter-spacing: -0.015em; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
-.value h3::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex: none; }
-.value p { color: var(--muted); font-size: 15px; line-height: 1.6; }
-
-/* ---------- Pricing ---------- */
-.pricing { padding: 0 0 clamp(80px, 10vw, 128px); }
-.pricing-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
-.pricing-copy .section-title { margin: 16px 0 20px; }
-.pricing-copy .btn-pair { margin-top: 32px; }
-.pricing-copy .btn-circle { background: var(--navy); color: var(--gold); }
-.rates { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.rates-head { display: flex; justify-content: space-between; padding: 20px 28px; background: var(--pale); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
-.rates table { width: 100%; border-collapse: collapse; }
-.rates th, .rates td { text-align: left; padding: 18px 28px; border-top: 1px solid var(--line); font-size: 15px; vertical-align: top; }
-.rates th { font-weight: 500; width: 40%; }
-.rates td { color: var(--muted); }
-.rates tr.none th, .rates tr.none td { background: var(--navy); color: var(--white); border-top-color: var(--navy); }
-.rates tr.none td strong { color: var(--gold); font-weight: 600; }
-
-/* ---------- Quote ---------- */
-.quote-shell { padding: 0 16px 16px; }
-.quote {
-  position: relative; isolation: isolate; overflow: hidden;
-  border-radius: var(--radius); background: var(--navy); color: var(--white);
-  padding: clamp(56px, 8vw, 104px) 0;
-}
-.quote::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.18;
-  background: url("assets/img/shipping.jpg") center / cover no-repeat;
-}
-.quote::after {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(90deg, var(--navy) 30%, rgba(0, 31, 63, 0.7) 100%);
-}
-.quote-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
-.quote .eyebrow { color: rgba(255, 255, 255, 0.7); }
-.quote .section-title { margin: 16px 0 20px; color: var(--white); }
-.quote .section-lead { color: rgba(255, 255, 255, 0.78); }
-.quote-mail { margin-top: 32px; font-size: 15px; color: rgba(255, 255, 255, 0.78); }
-.quote-mail a { color: var(--white); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
-
-.form { background: var(--white); color: var(--ink); border-radius: var(--radius-sm); padding: clamp(24px, 3vw, 36px); }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field.full { grid-column: 1 / -1; }
-.field label { font-size: 14px; font-weight: 500; }
-.field input, .field select, .field textarea {
-  width: 100%; font: inherit; font-size: 15px; color: var(--ink);
-  background: var(--pale); border: 1px solid var(--line); border-radius: 12px;
-  padding: 12px 14px; line-height: 1.4; transition: border-color .2s, background .2s;
-}
-.field textarea { resize: vertical; min-height: 96px; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--navy); background: var(--white); }
-.field .err { display: none; font-size: 13px; color: var(--alert); line-height: 1.4; }
-.field.invalid input { border-color: var(--alert); }
-.field.invalid .err { display: block; }
-.form-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
-.form-foot small { color: var(--muted); font-size: 13px; }
-.form .sent { display: none; text-align: left; padding: 12px 0; }
-.form .sent h3 { font-size: 28px; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
-.form .sent h3::before { content: ""; width: 28px; height: 28px; border-radius: 50%; flex: none; background: var(--success) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M6 12.5l4 4 8-9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%272.4%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E") center / 18px no-repeat; }
-.form .sent p { color: var(--muted); }
-.form.is-sent .form-body { display: none; }
-.form.is-sent .sent { display: block; }
-
-/* ---------- Footer ---------- */
-.footer { padding: 56px 0 40px; }
-.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
-.footer-top img { height: 64px; width: auto; }
-.footer-top p { color: var(--muted); font-size: 15px; margin-top: 12px; max-width: 32ch; }
-.footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
-.footer-links h4 { margin: 0 0 12px; font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; }
-.footer-links a { display: block; font-size: 15px; padding: 3px 0; }
-.footer-links a:hover { color: var(--navy-2); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
-.footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; font-size: 14px; color: var(--muted); }
-
-/* ---------- Responsive ---------- */
-@media (max-width: 1000px) {
-  .steps { grid-template-columns: 1fr 1fr; }
-  .step { min-height: 0; }
-}
-@media (max-width: 900px) {
-  .nav-links, .nav-actions { display: none; }
-  .nav-links .mobile-only { display: block; }
-  .menu-btn { display: grid; }
-  .nav.open { flex-wrap: wrap; }
-  .nav.open .nav-links {
-    display: flex; flex-direction: column; order: 3; width: 100%;
-    border-radius: 18px; padding: 8px; background: rgba(0, 31, 63, 0.7);
-  }
-  .nav.open .nav-links a { padding: 12px 16px; font-size: 16px; }
-  .hero-body { grid-template-columns: 1fr; gap: 28px; padding-bottom: 36px; }
-  .hero-side { justify-self: start; }
-  .intro-grid, .how-head, .fit-grid, .pricing-grid, .quote-grid, .portal-grid { grid-template-columns: 1fr; }
-  .how-head .section-lead { justify-self: start; }
-  .fit-media { aspect-ratio: 4 / 3; }
-  .card { flex-basis: 78%; }
-}
-@media (max-width: 600px) {
-  .hero-shell { padding: 8px; }
-  .hero { min-height: min(780px, calc(100svh - 16px)); border-radius: 20px; }
-  .hero-tag { flex-wrap: wrap; row-gap: 4px; font-size: 13px; }
-  .nav .brand img { height: 42px; }
-  .hero-foot { flex-direction: column; align-items: flex-start; }
-  .scroll-down { display: none; }
-  .stats, .steps, .values, .form-grid, .features { grid-template-columns: 1fr; }
-  .demo-kpis { grid-template-columns: 1fr 1fr; }
-  .demo-tabs { padding: 10px 12px; gap: 2px; }
-  .demo-tabs button { padding: 7px 11px; font-size: 13px; }
-  .demo-panel { padding: 16px; }
-  .step h3 { margin-top: 20px; }
-  .services-head { flex-direction: column; align-items: flex-start; }
-  .card { flex-basis: 86%; aspect-ratio: 4 / 4.6; }
-  .pp-bars { display: none; }
-  .pp-row:nth-child(2) { border-bottom: 0; padding-bottom: 0; }
-  .how { margin: 0 8px; }
-  .quote-shell { padding: 0 8px 8px; }
-  .rates th, .rates td, .rates-head { padding-left: 18px; padding-right: 18px; }
-}
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Sonic Fulfillment", "description": "3PL eCommerce fulfillment in Southern California: receiving, storage, pick and pack, shipping and returns.", "url": "https://sonicfulfillment.com/", "logo": "https://sonicfulfillment.com/assets/logo.png", "image": "https://sonicfulfillment.com/assets/img/hero-warehouse.jpg", "telephone": "+1-949-912-2931", "email": "info@sonicfulfillment.com", "address": {"@type": "PostalAddress", "streetAddress": "3731 W Warner Ave", "addressLocality": "Santa Ana", "addressRegion": "CA", "postalCode": "92704", "addressCountry": "US"}, "areaServed": "US"}</script>
 </head>
 <body>
 
 <div class="hero-shell" id="top">
-  <header class="hero">
+  <header class="hero hero-clean">
     <nav class="nav" aria-label="Main">
-      <a class="brand" href="#top" aria-label="Sonic Fulfillment home"><img src="assets/logo-white.png" alt="Sonic Fulfillment" width="777" height="455"></a>
+      <a class="brand" href="index.html" aria-label="Sonic Fulfillment home"><img src="assets/logo-white.png" alt="Sonic Fulfillment" width="777" height="455"></a>
       <div class="nav-links" id="nav-links">
-        <a href="#top" aria-current="page">Home</a>
-        <a href="#services">Services</a>
-        <a href="#how">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#quote">Contact</a>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="contact.html">Contact</a>
         <a class="mobile-only" href="dashboard.html">Client login</a>
       </div>
       <div class="nav-actions">
@@ -461,51 +33,32 @@ section { scroll-margin-top: 24px; }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
           Client login
         </a>
-        <a class="btn btn-gold" href="#quote">Get a quote</a>
+        <a class="btn btn-gold" href="contact.html">Get a quote</a>
       </div>
       <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
       </button>
     </nav>
 
-    <div class="hero-body">
-      <div>
-        <p class="hero-tag">
-          <span class="dots" aria-hidden="true">
-            <i><svg viewBox="0 0 10 10"><path d="M2 5.2l2 2 4-4.4" fill="none" stroke="#001f3f" stroke-width="1.6"/></svg></i>
-          </span>
-          Warehouse in Southern California &middot; <u>Shipping to all 50 states and worldwide</u>
-        </p>
-        <h1><em>Fast</em> Orders.<br>Accurate Packing.<br>Clear Pricing.</h1>
+    <div class="clean-body">
+      <h1><em>Fast</em> Orders.<br>Accurate Packing.<br>Clear Pricing.</h1>
+      <p>eCommerce fulfillment from Southern California. We store, pack and ship your orders nationwide and worldwide.</p>
+      <div class="clean-cta">
+        <a class="btn btn-gold" href="contact.html">Get a quote</a>
+        <a class="btn btn-outline" href="services.html">See services</a>
       </div>
-      <div class="hero-side">
-        <p>Sonic Fulfillment stores your inventory in Southern California and ships every order from Amazon, Shopify, eBay, TikTok Shop and Whatnot with DHL, FedEx, USPS or UPS. We also prep and ship inventory to Amazon FBA.</p>
-        <a class="btn-pair" href="#quote">
-          <span class="btn btn-gold">Get a quote</span>
-          <span class="btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-foot">
-      <div class="hero-groups">
-        <div class="carriers">
-          <span>We fulfill for</span>
-          <span class="chip">Amazon FBA</span><span class="chip">Shopify</span><span class="chip">eBay</span><span class="chip">TikTok Shop</span><span class="chip">Whatnot</span>
-        </div>
-        <div class="carriers">
-          <span>Ships with</span>
-          <span class="chip">DHL</span><span class="chip">FedEx</span><span class="chip">USPS</span><span class="chip">UPS</span>
-        </div>
-      </div>
-      <a class="scroll-down" href="#intro">Scroll down
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-      </a>
     </div>
   </header>
 </div>
 
 <main>
+  <section class="namestrip" aria-label="Sales channels and carriers">
+    <div class="wrap">
+      <div class="ns-row"><span class="ns-label">We fulfill for</span><ul class="ns-names"><li><strong>Online marketplaces</strong><span>Amazon, eBay, Facebook Marketplace</span></li><li><strong>Social and live selling</strong><span>TikTok Shop, Whatnot</span></li><li><strong>Your own store</strong><span>Shopify and other platforms</span></li></ul></div>
+      <div class="ns-row"><span class="ns-label">Ships with</span><ul class="ns-names"><li><strong>Major US carriers</strong><span>UPS, USPS, FedEx</span></li><li><strong>International carriers</strong><span>DHL and others</span></li></ul></div>
+    </div>
+  </section>
+
   <section class="intro" id="intro">
     <div class="wrap">
       <div class="intro-grid">
@@ -537,7 +90,7 @@ section { scroll-margin-top: 24px; }
 
       <div class="track" id="track" tabindex="0" aria-label="Services">
         <article class="card">
-          <img src="assets/img/receiving.jpg" alt="Cartons stacked on warehouse pallet racks" loading="lazy">
+          <img src="assets/img/receiving.jpg" alt="Pallet stacked with cartons on a warehouse floor" loading="lazy">
           <div class="card-body"><h3>Receiving</h3><p>We unload, count and inspect incoming stock, and flag any discrepancies to you.</p></div>
         </article>
         <article class="card">
@@ -545,11 +98,16 @@ section { scroll-margin-top: 24px; }
           <div class="card-body"><h3>Storage</h3><p>Secure shelf, bin and pallet storage, with inventory counts you can check anytime.</p></div>
         </article>
         <article class="card">
-          <img src="assets/img/pickpack.jpg" alt="Packed parcels ready to ship" loading="lazy">
+          <img src="assets/img/pickpack.jpg" alt="Worker packing an order into a shipping box" loading="lazy">
           <div class="card-body"><h3>Pick and Pack</h3><p>Orders are picked, checked and packed to your standards, including inserts and branded packaging.</p></div>
         </article>
-        <article class="card">
-          <img src="assets/img/shipping.jpg" alt="Delivery truck on an open highway" loading="lazy">
+        <article class="card card-carriers">
+          <div class="carrier-logos">
+            <span><img src="assets/img/carriers/usps.svg" alt="USPS" loading="lazy"></span>
+            <span><img src="assets/img/carriers/ups.svg" alt="UPS" loading="lazy"></span>
+            <span><img src="assets/img/carriers/fedex.svg" alt="FedEx" loading="lazy"></span>
+            <span><img src="assets/img/carriers/dhl.svg" alt="DHL" loading="lazy"></span>
+          </div>
           <div class="card-body"><h3>Shipping</h3><p>UPS, USPS, FedEx and DHL to every US address, with the service chosen for each package.</p></div>
         </article>
         <article class="card">
@@ -557,22 +115,18 @@ section { scroll-margin-top: 24px; }
           <div class="card-body"><h3>International Shipping</h3><p>Ship to customers worldwide with DHL, FedEx, UPS and USPS international services, with customs forms prepared for every package.</p></div>
         </article>
         <article class="card">
-          <img src="assets/img/fba-prep.jpg" alt="Amazon app open on a smartphone" loading="lazy">
-          <div class="card-body"><h3>Amazon FBA Prep</h3><p>FNSKU labeling, poly bagging, bundling and carton labels, then shipped to Amazon fulfillment centers.</p></div>
+          <img src="assets/img/prep.jpg" alt="Barcoded carton with a label stamp, clipboard and packing tape" loading="lazy">
+          <div class="card-body"><h3>eCommerce Prep</h3><p>Labeling, bagging, bundling and packing for Amazon FBA, Shopify, eBay, TikTok Shop and Whatnot, including live show orders.</p></div>
         </article>
         <article class="card">
-          <img src="assets/img/live-selling.jpg" alt="Shopping bags laid out on a dark surface" loading="lazy">
-          <div class="card-body"><h3>Whatnot and Live Selling</h3><p>After each Whatnot or TikTok Shop live show, we match, pack and ship every order quickly.</p></div>
-        </article>
-        <article class="card">
-          <img src="assets/img/returns.jpg" alt="A parcel being handed over" loading="lazy">
+          <img src="assets/img/returns.jpg" alt="Worker opening a returned package to inspect the item" loading="lazy">
           <div class="card-body"><h3>Returns</h3><p>We receive returns, inspect them and restock sellable items so they're ready to ship again.</p></div>
         </article>
         <article class="card">
-          <img src="assets/img/kitting.jpg" alt="Two kraft gift boxes" loading="lazy">
+          <img src="assets/img/kitting.jpg" alt="Hands placing a wrapped bundle into a box of packing material" loading="lazy">
           <div class="card-body"><h3>Kitting and Bundles</h3><p>Gift sets, subscription boxes and multi-item bundles assembled before they ship.</p></div>
         </article>
-        <a class="card card-portal" href="#portal">
+        <a class="card card-portal" href="services.html#portal">
           <div class="portal-preview" aria-hidden="true">
             <div class="pp-row"><span>Units in stock</span><strong>18,420</strong></div>
             <div class="pp-row"><span>Shipped this month</span><strong>3,912</strong></div>
@@ -581,122 +135,7 @@ section { scroll-margin-top: 24px; }
           <div class="card-body"><h3>Client Dashboard</h3><p>Stock levels, orders shipped and tracking in one place. <span class="portal-link">View the demo &rarr;</span></p></div>
         </a>
       </div>
-    </div>
-  </section>
-
-  <section class="portal" id="portal" aria-labelledby="portal-title">
-    <div class="wrap portal-grid">
-      <div class="portal-copy">
-        <span class="eyebrow">Client dashboard</span>
-        <h2 class="section-title" id="portal-title">See Your Stock and Orders Anytime</h2>
-        <p class="section-lead">Every Sonic Fulfillment client gets a login to their own dashboard. Check inventory, follow orders and see how shipping is going without sending an email.</p>
-        <div class="features">
-          <div class="feature"><h3>Live inventory</h3><p>On hand, reserved and available units for every SKU.</p></div>
-          <div class="feature"><h3>Order tracking</h3><p>Every order from received to delivered, with tracking numbers.</p></div>
-          <div class="feature"><h3>Low-stock flags</h3><p>See which products are running low before they sell out.</p></div>
-          <div class="feature"><h3>All your channels</h3><p>Shopify, Amazon, eBay, TikTok Shop and Whatnot orders in one view.</p></div>
-          <div class="feature"><h3>Shipping performance</h3><p>Orders shipped per day, on-time rate and carrier mix.</p></div>
-          <div class="feature"><h3>Access 24/7</h3><p>Sign in from your laptop or phone, whenever you need it.</p></div>
-        </div>
-        <a class="btn-pair" href="dashboard.html">
-          <span class="btn btn-gold">Client login</span>
-          <span class="btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-        </a>
-      </div>
-
-      <div>
-        <span class="demo-tag">Interactive preview &middot; sample data</span>
-        <div class="demo">
-          <div class="demo-bar"><img src="assets/logo-white.png" alt="" width="777" height="455"><span>Client dashboard</span></div>
-          <div class="demo-tabs" role="tablist" aria-label="Dashboard preview">
-            <button type="button" role="tab" id="dt-overview" aria-controls="dp-overview" aria-selected="true">Overview</button>
-            <button type="button" role="tab" id="dt-inventory" aria-controls="dp-inventory" aria-selected="false" tabindex="-1">Inventory</button>
-            <button type="button" role="tab" id="dt-orders" aria-controls="dp-orders" aria-selected="false" tabindex="-1">Orders</button>
-            <button type="button" role="tab" id="dt-shipping" aria-controls="dp-shipping" aria-selected="false" tabindex="-1">Shipping</button>
-          </div>
-
-          <div class="demo-panel" role="tabpanel" id="dp-overview" aria-labelledby="dt-overview">
-            <div class="demo-kpis">
-              <div class="demo-kpi"><span>Orders today</span><strong>186</strong></div>
-              <div class="demo-kpi"><span>Shipped on time</span><strong>99.4%</strong></div>
-              <div class="demo-kpi"><span>Units in stock</span><strong>17,420</strong></div>
-              <div class="demo-kpi"><span>Awaiting shipment</span><strong>42</strong></div>
-            </div>
-            <div class="demo-chart">
-              <div class="demo-chart-head"><span>Orders shipped per day</span><small>Last 14 days</small></div>
-              <div class="demo-bars" role="img" aria-label="Orders shipped per day over the last 14 days, between 69 and 188"><i style="height:59%" data-tip="Sep 16 · 118 orders"></i><i style="height:67%" data-tip="Sep 17 · 134 orders"></i><i style="height:63%" data-tip="Sep 18 · 126 orders"></i><i style="height:76%" data-tip="Sep 19 · 152 orders"></i><i style="height:86%" data-tip="Sep 20 · 171 orders"></i><i style="height:37%" data-tip="Sep 21 · 74 orders"></i><i style="height:34%" data-tip="Sep 22 · 69 orders"></i><i style="height:79%" data-tip="Sep 23 · 158 orders"></i><i style="height:83%" data-tip="Sep 24 · 166 orders"></i><i style="height:74%" data-tip="Sep 25 · 149 orders"></i><i style="height:90%" data-tip="Sep 26 · 181 orders"></i><i style="height:94%" data-tip="Sep 27 · 188 orders"></i><i style="height:46%" data-tip="Sep 28 · 92 orders"></i><i style="height:43%" data-tip="Sep 29 · 86 orders"></i></div>
-              <div class="demo-axis"><span>Sep 16</span><span>Sep 22</span><span>Sep 29</span></div>
-            </div>
-          </div>
-
-          <div class="demo-panel" role="tabpanel" id="dp-inventory" aria-labelledby="dt-inventory" hidden>
-            <div class="demo-scroll"><table>
-              <thead><tr><th>Product</th><th class="num">On hand</th><th class="num">Available</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td>Classic Crew Tee, Black / M</td><td class="num">1,840</td><td class="num">1,776</td><td><span class="st">In stock</span></td></tr>
-                <tr><td>Everyday Hoodie, Navy / M</td><td class="num">612</td><td class="num">590</td><td><span class="st">In stock</span></td></tr>
-                <tr><td>Everyday Hoodie, Gray / S</td><td class="num">88</td><td class="num">69</td><td><span class="st warn">Low stock</span></td></tr>
-                <tr><td>Canvas Tote Bag</td><td class="num">2,390</td><td class="num">2,353</td><td><span class="st">In stock</span></td></tr>
-                <tr><td>Enamel Mug, 12 oz</td><td class="num">46</td><td class="num">34</td><td><span class="st warn">Low stock</span></td></tr>
-                <tr><td>Trucker Cap, Navy</td><td class="num">0</td><td class="num">0</td><td><span class="st bad">Out of stock</span></td></tr>
-              </tbody>
-            </table></div>
-          </div>
-
-          <div class="demo-panel" role="tabpanel" id="dp-orders" aria-labelledby="dt-orders" hidden>
-            <div class="demo-scroll"><table>
-              <thead><tr><th>Order</th><th>Channel</th><th>Carrier</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td>#10482</td><td>Shopify</td><td>USPS</td><td><span class="st info">Processing</span></td></tr>
-                <tr><td>#10481</td><td>Whatnot</td><td>USPS</td><td><span class="st">Shipped</span></td></tr>
-                <tr><td>#10480</td><td>Amazon</td><td>UPS</td><td><span class="st">Shipped</span></td></tr>
-                <tr><td>#10479</td><td>TikTok Shop</td><td>USPS</td><td><span class="st">In transit</span></td></tr>
-                <tr><td>#10477</td><td>eBay</td><td>DHL</td><td><span class="st">Delivered</span></td></tr>
-                <tr><td>#10476</td><td>Shopify</td><td>UPS</td><td><span class="st bad">Address issue</span></td></tr>
-              </tbody>
-            </table></div>
-          </div>
-
-          <div class="demo-panel" role="tabpanel" id="dp-shipping" aria-labelledby="dt-shipping" hidden>
-            <div class="demo-kpis" style="grid-template-columns: repeat(2, 1fr)">
-              <div class="demo-kpi"><span>Shipped this month</span><strong>4,179</strong></div>
-              <div class="demo-kpi"><span>Shipped on time</span><strong>99.4%</strong></div>
-            </div>
-            <div class="demo-chart">
-              <div class="demo-chart-head"><span>Packages by carrier</span><small>Last 30 days</small></div>
-              <div class="carrier-rows">
-                <div class="carrier-row"><span>USPS</span><b>2,006</b><div class="trk"><i style="width:100%"></i></div></div>
-                <div class="carrier-row"><span>UPS</span><b>1,128</b><div class="trk"><i style="width:56%"></i></div></div>
-                <div class="carrier-row"><span>FedEx</span><b>752</b><div class="trk"><i style="width:37%"></i></div></div>
-                <div class="carrier-row"><span>DHL</span><b>293</b><div class="trk"><i style="width:15%"></i></div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="demo-foot">
-            <span>Sample figures for illustration only. Click a tab to explore.</span>
-            <a class="btn btn-gold" href="dashboard.html">Open client login</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="how" id="how" aria-labelledby="how-title">
-    <div class="wrap">
-      <div class="how-head">
-        <div>
-          <span class="eyebrow">How it works</span>
-          <h2 class="section-title" id="how-title" style="margin-top:16px">From Your Store to Your Customer's Door</h2>
-        </div>
-        <p class="section-lead">Once your store is connected and your stock is on our shelves, every new order ships without you touching it.</p>
-      </div>
-      <ol class="steps">
-        <li class="step"><span class="step-num">01</span><h3>Connect your store</h3><p>Link your Shopify, Amazon, eBay, TikTok Shop or Whatnot store. New orders come to us automatically.</p></li>
-        <li class="step"><span class="step-num">02</span><h3>Send your inventory</h3><p>Ship cartons or pallets to our Southern California warehouse. We count and check every unit in.</p></li>
-        <li class="step"><span class="step-num">03</span><h3>We pick, pack and ship</h3><p>Each order is packed with care and labeled for UPS, USPS, FedEx or DHL, based on size, speed and cost.</p></li>
-        <li class="step"><span class="step-num">04</span><h3>Customers get tracking</h3><p>Tracking numbers sync back to your store, and you see stock levels and order status as they change.</p></li>
-      </ol>
+      <p class="services-more"><a class="btn btn-ghost" href="services.html">See all services</a></p>
     </div>
   </section>
 
@@ -704,15 +143,11 @@ section { scroll-margin-top: 24px; }
     <div class="wrap fit-grid">
       <div class="fit-media">
         <img src="assets/img/growth.jpg" alt="Warehouse racks stocked with boxed inventory and a forklift" loading="lazy">
-        <div class="fit-badge">
-          <strong>$100K&ndash;$10M+</strong>
-          <span>Annual revenue of the brands we typically serve</span>
-        </div>
       </div>
       <div class="fit-copy">
         <span class="eyebrow">Who we work with</span>
-        <h2 class="section-title" id="fit-title">Made for Brands That Have Outgrown the Garage</h2>
-        <p class="section-lead">We work with small and mid-market eCommerce brands selling on Amazon, Shopify, eBay, TikTok Shop and Whatnot: too busy to pack orders in-house, not looking for an enterprise contract.</p>
+        <h2 class="section-title" id="fit-title">Made for Sellers of Every Size</h2>
+        <p class="section-lead">We work with eCommerce sellers of every size, on marketplaces like Amazon, eBay and Facebook Marketplace, live selling apps like TikTok Shop and Whatnot, or your own store, whether you're shipping your first orders or too busy to keep packing them in-house.</p>
         <div class="values">
           <div class="value"><h3>Fast &amp; efficient</h3><p>Orders are processed quickly, shipped promptly, and questions get answered by people who know your account.</p></div>
           <div class="value"><h3>Reliable &amp; accurate</h3><p>Every order is checked before it's sealed, so the right items reach the right customer on schedule.</p></div>
@@ -723,85 +158,18 @@ section { scroll-margin-top: 24px; }
     </div>
   </section>
 
-  <section class="pricing" id="pricing" aria-labelledby="pricing-title">
-    <div class="wrap pricing-grid">
-      <div class="pricing-copy">
-        <span class="eyebrow">Pricing</span>
-        <h2 class="section-title" id="pricing-title">Pricing You Can Read in One Sitting</h2>
-        <p class="section-lead">Your quote lists every fee before you sign, and your monthly invoice uses the same lines. Nothing gets added later.</p>
-        <a class="btn-pair" href="#quote">
+  <div class="quote-shell">
+    <section class="quote cta" aria-labelledby="cta-title">
+      <div class="wrap cta-inner">
+        <div>
+          <span class="eyebrow">Get started</span>
+          <h2 class="section-title" id="cta-title">Get a Fulfillment Quote</h2>
+          <p class="section-lead">Tell us a little about your store and order volume. We'll send back pricing built for your products, with every fee listed.</p>
+        </div>
+        <a class="btn-pair" href="contact.html">
           <span class="btn btn-gold">Get a quote</span>
           <span class="btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
         </a>
-      </div>
-      <div class="rates">
-        <div class="rates-head"><span>What you pay for</span><span>Rates set in your quote</span></div>
-        <table>
-          <caption class="sr-only" style="position:absolute;left:-9999px">Fulfillment fees and how each is billed</caption>
-          <tbody>
-            <tr><th scope="row">Receiving</th><td>Per carton or pallet received</td></tr>
-            <tr><th scope="row">Storage</th><td>Per bin, shelf or pallet, monthly</td></tr>
-            <tr><th scope="row">Pick and pack</th><td>Per order, plus each additional item</td></tr>
-            <tr><th scope="row">Packaging</th><td>Per box or mailer used</td></tr>
-            <tr><th scope="row">Shipping</th><td>Carrier postage for each package</td></tr>
-            <tr class="none"><th scope="row">Hidden fees</th><td><strong>None</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <div class="quote-shell">
-    <section class="quote" id="quote" aria-labelledby="quote-title">
-      <div class="wrap quote-grid">
-        <div>
-          <span class="eyebrow">Get started</span>
-          <h2 class="section-title" id="quote-title">Get a Fulfillment Quote</h2>
-          <p class="section-lead">Tell us a little about your store and order volume. We'll send back pricing built for your products, with every fee listed.</p>
-          <p class="quote-mail">Prefer email? Send your details to <a href="mailto:info@sonicfulfillment.com">info@sonicfulfillment.com</a> and we'll reply with your quote.</p>
-        </div>
-
-        <form class="form" id="quote-form" novalidate>
-          <div class="form-body">
-            <div class="form-grid">
-              <div class="field">
-                <label for="f-name">Your name</label>
-                <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
-                <span class="err" id="f-name-err">Enter your name so we know who to reply to.</span>
-              </div>
-              <div class="field">
-                <label for="f-email">Work email</label>
-                <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
-                <span class="err" id="f-email-err">Enter a valid email, like you@yourstore.com.</span>
-              </div>
-              <div class="field">
-                <label for="f-site">Store website</label>
-                <input id="f-site" name="website" type="url" autocomplete="url" placeholder="yourstore.com">
-              </div>
-              <div class="field">
-                <label for="f-volume">Orders per month</label>
-                <select id="f-volume" name="volume">
-                  <option>Under 500</option>
-                  <option>500 to 2,000</option>
-                  <option>2,000 to 10,000</option>
-                  <option>More than 10,000</option>
-                </select>
-              </div>
-              <div class="field full">
-                <label for="f-products">What do you sell? (optional)</label>
-                <textarea id="f-products" name="products"></textarea>
-              </div>
-            </div>
-            <div class="form-foot">
-              <small>We only use your details to prepare your quote.</small>
-              <button class="btn btn-gold" type="submit">Send quote request</button>
-            </div>
-          </div>
-          <div class="sent" role="status">
-            <h3>Quote request sent</h3>
-            <p>Thanks. We'll reply to <strong id="sent-email"></strong> with your pricing.</p>
-          </div>
-        </form>
       </div>
     </section>
   </div>
@@ -812,21 +180,23 @@ section { scroll-margin-top: 24px; }
     <div class="footer-top">
       <div>
         <img src="assets/logo.png" alt="Sonic Fulfillment" width="777" height="455">
-        <p>3PL fulfillment for Amazon FBA, Shopify, eBay, TikTok Shop and Whatnot sellers.</p>
+        <p>3PL fulfillment for online sellers, from marketplaces to your own store.</p>
       </div>
       <div class="footer-links">
         <div>
           <h4>Company</h4>
-          <a href="#services">Services</a>
-          <a href="#how">How it works</a>
-          <a href="#pricing">Pricing</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="our-story.html">Our Story</a>
           <a href="dashboard.html">Client login</a>
         </div>
         <div>
           <h4>Contact</h4>
           <a href="tel:+19499122931">(949) 912-2931</a>
           <a href="mailto:info@sonicfulfillment.com">info@sonicfulfillment.com</a>
-          <a href="#quote">Get a quote</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=3731+W+Warner+Ave%2C+Santa+Ana%2C+CA+92704" target="_blank" rel="noopener">3731 W Warner Ave<br>Santa Ana, CA 92704</a>
+          <a href="contact.html">Get a quote</a>
         </div>
       </div>
     </div>
@@ -837,84 +207,6 @@ section { scroll-margin-top: 24px; }
   </div>
 </footer>
 
-<script>
-(function () {
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Mobile menu
-  var nav = document.querySelector('.nav');
-  var menuBtn = document.querySelector('.menu-btn');
-  menuBtn.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  });
-  document.querySelectorAll('.nav-links a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      nav.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Services carousel
-  var track = document.getElementById('track');
-  var prev = document.querySelector('.arrow.prev');
-  var next = document.querySelector('.arrow.next');
-  function step() {
-    var card = track.querySelector('.card');
-    return card.getBoundingClientRect().width + 24;
-  }
-  function update() {
-    var max = track.scrollWidth - track.clientWidth - 2;
-    prev.disabled = track.scrollLeft <= 2;
-    next.disabled = track.scrollLeft >= max;
-  }
-  prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
-  next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
-  track.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-
-  // Dashboard preview tabs
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.demo-tabs [role="tab"]'));
-  function selectTab(tab) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-  }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { selectTab(t); });
-    t.addEventListener('keydown', function (e) {
-      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (!d) return;
-      var next = tabs[(i + d + tabs.length) % tabs.length];
-      selectTab(next); next.focus();
-    });
-  });
-
-  // Quote form
-  var form = document.getElementById('quote-form');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var ok = true;
-    [['f-name', function (v) { return v.trim().length > 0; }],
-     ['f-email', function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }]
-    ].forEach(function (pair) {
-      var input = document.getElementById(pair[0]);
-      var valid = pair[1](input.value);
-      input.parentElement.classList.toggle('invalid', !valid);
-      input.setAttribute('aria-invalid', String(!valid));
-      if (!valid && ok) { input.focus(); ok = false; }
-    });
-    if (!ok) return;
-    // TODO: connect to a form backend (e.g. Formspree, HubSpot, or your CRM) before launch.
-    document.getElementById('sent-email').textContent = document.getElementById('f-email').value.trim();
-    form.classList.add('is-sent');
-  });
-})();
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
